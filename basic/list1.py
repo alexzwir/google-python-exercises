@@ -15,6 +15,8 @@
 # It's ok if you do not complete all the functions, and there
 # are some additional functions to try in list2.py.
 
+from operator import itemgetter
+
 
 # A. match_ends
 # Given a list of strings, return the count of the number of
@@ -56,12 +58,20 @@ def front_x(words):
 # [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element form each tuple.
 def sort_last(tuples):
-    # +++your code here+++
-    return
+    for t in tuples:
+        sorted_by_second = sorted(tuples, key=lambda t: t[1])
+    return sorted_by_second
 
+
+def sort_last_second(tuples):
+    for t in tuples:
+        sorted_by_second = sorted(tuples, key=itemgetter(1))
+    return sorted_by_second
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
+
+
 def test(got, expected):
     if got == expected:
         prefix = ' OK '
@@ -93,6 +103,15 @@ def main():
     test(sort_last([(2, 3), (1, 2), (3, 1)]),
          [(3, 1), (1, 2), (2, 3)])
     test(sort_last([(1, 7), (1, 3), (3, 4, 5), (2, 2)]),
+         [(2, 2), (1, 3), (3, 4, 5), (1, 7)])
+
+    print()
+    print('sort_last_second')
+    test(sort_last_second([(1, 3), (3, 2), (2, 1)]),
+         [(2, 1), (3, 2), (1, 3)])
+    test(sort_last_second([(2, 3), (1, 2), (3, 1)]),
+         [(3, 1), (1, 2), (2, 3)])
+    test(sort_last_second([(1, 7), (1, 3), (3, 4, 5), (2, 2)]),
          [(2, 2), (1, 3), (3, 4, 5), (1, 7)])
 
 
