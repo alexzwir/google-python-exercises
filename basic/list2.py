@@ -14,8 +14,42 @@
 # so [1, 2, 2, 3] returns [1, 2, 3]. You may create a new list or
 # modify the passed in list.
 def remove_adjacent(nums):
-    # +++your code here+++
-    return
+    i = 0
+    l = []
+
+    while i < (len(nums) - 1):
+        if nums[i] == nums[i + 1]:
+            # print(i)
+            #print("Numeros iguais")
+            if len(l) != 0:
+                #print("\t A lista possui elelemento")
+                if nums[i] == l[-1]:
+                    pass
+                    #print("Ultimo elemento Igual. Nao é necessario deletar")
+                    # print(l)
+                else:
+                    deleted = l.pop(-1)
+                    #print("Deletado o ", deleted)
+                    # print(l)
+                i += 1
+            else:
+                #print("\tOs numeros são iguais e nao possuimos nada na lista")
+                #print("\t", l)
+                i += 1
+        else:
+            if len(l) != 0 and nums[i] == l[-1]:
+                #print("Ultimo elemento Igual. Nao é necessario adicionar")
+                # print(l)
+                l.append(nums[i + 1])
+                i += 1
+
+            else:
+                # print(i)
+                #print("Diferentes: ", nums[i], nums[i + 1], "Adicionar a lista.")
+                l.append(nums[i])
+                l.append(nums[i + 1])
+                i += 1
+    return l
 
 
 # E. Given two lists sorted in increasing order, create and return a merged
