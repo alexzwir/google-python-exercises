@@ -19,36 +19,16 @@ def remove_adjacent(nums):
 
     while i < (len(nums) - 1):
         if nums[i] == nums[i + 1]:
-            # print(i)
-            #print("Numeros iguais")
-            if len(l) != 0:
-                #print("\t A lista possui elelemento")
-                if nums[i] == l[-1]:
-                    pass
-                    #print("Ultimo elemento Igual. Nao é necessario deletar")
-                    # print(l)
-                else:
-                    deleted = l.pop(-1)
-                    #print("Deletado o ", deleted)
-                    # print(l)
-                i += 1
-            else:
-                #print("\tOs numeros são iguais e nao possuimos nada na lista")
-                #print("\t", l)
-                i += 1
+            if len(l) != 0 and nums[i] != l[-1]:
+                l.pop(-1)
+            i += 1
         else:
             if len(l) != 0 and nums[i] == l[-1]:
-                #print("Ultimo elemento Igual. Nao é necessario adicionar")
-                # print(l)
                 l.append(nums[i + 1])
-                i += 1
-
             else:
-                # print(i)
-                #print("Diferentes: ", nums[i], nums[i + 1], "Adicionar a lista.")
                 l.append(nums[i])
                 l.append(nums[i + 1])
-                i += 1
+            i += 1
     return l
 
 
@@ -58,8 +38,10 @@ def remove_adjacent(nums):
 # pass of both lists.
 def linear_merge(list1, list2):
     # +++your code here+++
-    return
-
+    list3 = []
+    list3 = list1 + list2
+    list3.sort()
+    return list3
 
 # Note: the solution above is kind of cute, but unforunately list.pop(0)
 # is not constant time with the standard python list implementation, so
