@@ -24,8 +24,12 @@
 # So donuts(5) returns 'Number of donuts: 5'
 # and donuts(23) returns 'Number of donuts: many'
 def donuts(count):
-    # +++your code here+++
-    return
+    if count >= 10:
+        phrase = "Number of donuts: many"
+    else:
+        phrase = "Number of donuts: " + str(count)
+
+    return phrase
 
 
 # B. both_ends
@@ -35,7 +39,13 @@ def donuts(count):
 # is less than 2, return instead the empty string.
 def both_ends(s):
     # +++your code here+++
-    return
+    if len(s) < 2:
+        new_s = ""
+    else:
+        start = s[0:2]
+        end = s[len(s) - 2:]
+        new_s = start + end
+    return new_s
 
 
 # C. fix_start
@@ -49,8 +59,10 @@ def both_ends(s):
 # where all instances of stra have been replaced by strb.
 def fix_start(s):
     # +++your code here+++
-    return
-
+    target = s[0]
+    last_part = s[1:]
+    new_last_part = last_part.replace(target, "*", 999999)
+    return(target + new_last_part)
 
 # D. MixUp
 # Given strings a and b, return a single string with a and b separated
@@ -59,9 +71,20 @@ def fix_start(s):
 #   'mix', pod' -> 'pox mid'
 #   'dog', 'dinner' -> 'dig donner'
 # Assume a and b are length 2 or more.
+
+
 def mix_up(a, b):
     # +++your code here+++
-    return
+    first_two_letters_a = a[0:2]
+    first_two_letters_b = b[0:2]
+
+    rest_of_a = a[2:]
+    rest_of_b = b[2:]
+
+    new_a = first_two_letters_b + rest_of_a
+    new_b = first_two_letters_a + rest_of_b
+
+    return new_a + " " + new_b
 
 
 # Provided simple test() function used in main() to print
